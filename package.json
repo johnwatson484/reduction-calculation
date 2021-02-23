@@ -1,0 +1,40 @@
+{
+  "name": "reduction-calculation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app/index.js",
+    "start:watch": "nodemon --inspect=0.0.0.0 --ext css,js,njk --legacy-watch app/index.js",
+    "test": "jest --runInBand",
+    "test:lint": "standard",
+    "test:watch": "jest --coverage=false --onlyChanged --watch --runInBand"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnwatson484/reduction-calculation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnwatson484/reduction-calculation/issues"
+  },
+  "homepage": "https://github.com/johnwatson484/reduction-calculation#readme",
+  "devDependencies": {
+    "jest": "^26.4.0",
+    "nodemon": "^2.0.4",
+    "standard": "^14.3.4"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "beforeEach",
+      "expect",
+      "test",
+      "afterEach",
+      "jest",
+      "beforeAll",
+      "afterAll"
+    ]
+  }
+}
