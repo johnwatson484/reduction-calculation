@@ -1,38 +1,66 @@
-const calculateDistance = require('../../app/levenshtein')
+const calculate = require('../app/calculation')
 
-describe('levenshtein distance', () => {
-  test('calculates distance', () => {
-    const result = calculateDistance('car', 'bar')
-    expect(result).toBe(1)
+describe('calculate', () => {
+  test('1000 returns only band 1', () => {
+    const result = calculate(1000)
+    expect(result.result.filter(x => x.band === 1).length).toBe(1)
+    expect(result.result.length).toBe(1)
   })
 
-  test('calculates distance with long word', () => {
-    const result = calculateDistance('encyclopedia', 'edcyclipexia')
-    expect(result).toBe(3)
+  test('1000 includes all scheme years', () => {
+    const result = calculate(1000)
+    expect(result.result[0].result.filter(x => x.schemeYear === 2021).length).toBe(1)
+    expect(result.result[0].result.filter(x => x.schemeYear === 2022).length).toBe(1)
+    expect(result.result[0].result.filter(x => x.schemeYear === 2023).length).toBe(1)
+    expect(result.result[0].result.filter(x => x.schemeYear === 2024).length).toBe(1)
+    expect(result.result[0].result.length).toBe(4)
   })
 
-  test('calculates distance with multiple words', () => {
-    const result = calculateDistance('the cat in the hat', 'the rat on the mat')
-    expect(result).toBe(3)
+  test('1000 calculates 2021 reduction', () => {
+    const result = calculate(1000)
+    expect(result.result[0].result.find(x => x.schemeYear === 2021).reduction).toBe(50)
+    expect(result.result[0].result.length).toBe(4)
   })
 
-  test('calculates distance with multiple length words', () => {
-    const result = calculateDistance('great', 'get')
-    expect(result).toBe(2)
+  test('1000 calculates 2022 reduction', () => {
+    const result = calculate(1000)
+    expect(result.result[0].result.find(x => x.schemeYear === 2022).reduction).toBe(200)
+    expect(result.result[0].result.length).toBe(4)
   })
 
-  test('calculates distance with multiple words and length', () => {
-    const result = calculateDistance('great goal', 'get foals')
-    expect(result).toBe(4)
+  test('1000 calculates 2023 reduction', () => {
+    const result = calculate(1000)
+    expect(result.result[0].result.find(x => x.schemeYear === 2023).reduction).toBe(350)
+    expect(result.result[0].result.length).toBe(4)
   })
 
-  test('calculates distance with multiple words and length with no spaces', () => {
-    const result = calculateDistance('greatgoal', 'getfoals')
-    expect(result).toBe(4)
+  test('1000 calculates 2024 reduction', () => {
+    const result = calculate(1000)
+    expect(result.result[0].result.find(x => x.schemeYear === 2024).reduction).toBe(500)
+    expect(result.result[0].result.length).toBe(4)
   })
 
-  test('calculates distance of case', () => {
-    const result = calculateDistance('car', 'CaR')
-    expect(result).toBe(2)
+  test('1000 calculates 2021 payment', () => {
+    const result = calculate(1000)
+    expect(result.result[0].result.find(x => x.schemeYear === 2021).payment).toBe(950)
+    expect(result.result[0].result.length).toBe(4)
+  })
+
+  test('1000 calculates 2022 payment', () => {
+    const result = calculate(1000)
+    expect(result.result[0].result.find(x => x.schemeYear === 2022).payment).toBe(800)
+    expect(result.result[0].result.length).toBe(4)
+  })
+
+  test('1000 calculates 2023 payment', () => {
+    const result = calculate(1000)
+    expect(result.result[0].result.find(x => x.schemeYear === 2023).payment).toBe(650)
+    expect(result.result[0].result.length).toBe(4)
+  })
+
+  test('1000 calculates 2024 payment', () => {
+    const result = calculate(1000)
+    expect(result.result[0].result.find(x => x.schemeYear === 2024).payment).toBe(500)
+    expect(result.result[0].result.length).toBe(4)
   })
 })
