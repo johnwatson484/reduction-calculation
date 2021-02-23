@@ -23,7 +23,7 @@ module.exports = function getPaymentBands (bpsValue) {
     paymentBands.push({ band: 1, value: 30000 })
     paymentBands.push({ band: 2, value: 20000 })
     paymentBands.push({ band: 3, value: 100000 })
-    paymentBands.push({ band: 3, value: round(bpsValue - 150000, 2) })
+    paymentBands.push({ band: 4, value: round(bpsValue - 150000, 2) })
     return paymentBands
   }
 }
