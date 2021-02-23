@@ -6,6 +6,6 @@ module.exports = function calculateReduction (bpsValue, reductionRate) {
     bpsValue,
     rate: reductionRate.rate,
     reduction,
-    payment: bpsValue - reduction
+    payment: round(bpsValue - reduction, 2)
   }
 }
